@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/tiagods/enum-go/enum"
+	"github.com/tiagods/go-extras/enum"
 )
 
 // OperationValue represents the properties and behavior of a mathematical operation

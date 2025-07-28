@@ -15,7 +15,7 @@ A Go package that implements the Optional pattern for handling values that may o
 ## Usage
 
 ```go
-import "github.com/tiagods/enum-go/optional"
+import "github.com/tiagods/go-extras/optional"
 
 // Create an Optional with a value
 opt1 := optional.Of("Hello, World!")

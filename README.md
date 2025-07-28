@@ -1,4 +1,4 @@
-# enum-go
+# go-extras
 
 A Go library that provides two powerful utilities:
 1. **Rich Parameterized Enums**: Type-safe enum patterns inspired by Java
@@ -32,14 +32,14 @@ A Go library that provides two powerful utilities:
 ## Installation
 
 ```bash
-go get github.com/tiagods/enum-go
+go get github.com/tiagods/go-extras
 ```
 
 ## Packages
 
 ### Enum Package
 
-`enum-go` provides a flexible way to create rich enums in Go with multiple attributes, associated functions, and custom behavior. It solves the limitation of Go's standard `const` with `iota` approach.
+`go-extras` provides a flexible way to create rich enums in Go with multiple attributes, associated functions, and custom behavior. It solves the limitation of Go's standard `const` with `iota` approach.
 
 #### Quick Example - Enum
 

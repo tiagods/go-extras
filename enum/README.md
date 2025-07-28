@@ -1,4 +1,4 @@
-# enum-go
+# go-extras
 
 A library for parameterized enums in Go, inspired by Java's advanced enum model.
 
@@ -6,7 +6,7 @@ A library for parameterized enums in Go, inspired by Java's advanced enum model.
 
 Unlike languages like Java, Go does not have native support for rich enums (with multiple attributes and associated functions). The most common pattern in Go uses `const` with `iota`, which is functional for simple values, but limited when you want to associate properties and behaviors with enums.
 
-The `enum-go` solves this limitation by allowing:
+The `go-extras` solves this limitation by allowing:
 
 - Enums with varied parameters
 - Association of functions to the enum
@@ -16,7 +16,7 @@ The `enum-go` solves this limitation by allowing:
 ## 📦 Installation
 
 ```bash
-go get github.com/tiagods/enum-go
+go get github.com/tiagods/go-extras
 ```
 
 ## 📒 Usage Examples

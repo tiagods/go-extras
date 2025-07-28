@@ -4,7 +4,7 @@ import (
 	"errors"
 	"sort"
 
-	"github.com/tiagods/enum-go/optional"
+	"github.com/tiagods/go-extras/optional"
 )
 
 // ErrEnumNotFound is returned when an enum could not be found in the set

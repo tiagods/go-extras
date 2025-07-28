@@ -1,3 +1,3 @@
-module github.com/tiagods/enum-go
+module github.com/tiagods/go-extras
 
 go 1.24

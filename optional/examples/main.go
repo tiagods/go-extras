@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/tiagods/enum-go/optional"
+	"github.com/tiagods/go-extras/optional"
 )
 
 // User represents a simple user model
