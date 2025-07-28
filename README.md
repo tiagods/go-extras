@@ -1,8 +1,9 @@
 # go-extras
 
-A Go library that provides two powerful utilities:
+A Go library that provides three powerful utilities:
 1. **Rich Parameterized Enums**: Type-safe enum patterns inspired by Java
 2. **Optional Pattern**: A robust way to handle nullable/absent values
+3. **Stream Processing**: Functional-style operations on collections inspired by Java Streams
 
 ## Table of Contents
 - [Features](#features)
@@ -10,6 +11,7 @@ A Go library that provides two powerful utilities:
 - [Packages](#packages)
   - [Enum Package](#enum-package)
   - [Optional Package](#optional-package)
+  - [Stream Package](#stream-package)
 - [Examples](#examples)
 - [Documentation](#documentation)
 - [License](#license)
@@ -28,6 +30,13 @@ A Go library that provides two powerful utilities:
 - Zero-allocation empty optionals
 - Chainable operations
 - Clean error handling
+
+### Stream Features
+- Generic functional-style collection processing
+- Fluent API for chaining operations (filter, map, reduce, etc.)
+- Parallel stream processing with controllable concurrency
+- Grouping, sorting, and aggregation operations
+- Java-like stream pattern for Go
 
 ## Installation
 
@@ -103,6 +112,35 @@ present.IfPresent(func(v string) {
 value, err := empty.OrElseThrow(errors.New("value required"))
 ```
 
+### Stream Package
+
+The `stream` package provides a functional-style collection processing API inspired by Java's Stream API. It allows for a fluent, chainable approach to data transformations, filtering, and aggregation.
+
+#### Quick Example - Stream
+
+```go
+import "github.com/tiagods/go-extras/stream"
+
+// Create a stream from a slice
+s := stream.NewStream([]int{1, 2, 3, 4, 5})
+
+// Chain operations: filter even numbers, double them, and collect
+result := s.
+    Filter(func(n int) bool {
+        return n%2 == 0 // Only even numbers
+    }).
+    Sort(func(a, b int) bool {
+        return a > b // Descending order
+    }).
+    ToSlice() // [4, 2]
+
+// Process elements in parallel
+parallelResult := stream.NewStream([]int{1, 2, 3, 4, 5}).
+    ParallelStream(func(n int) interface{} {
+        return n * 2 // Double each number in parallel
+    }, 4) // Using 4 goroutines
+```
+
 ## Examples
 
 ### Enum Use Cases
@@ -172,12 +210,47 @@ func ParseInt(s string) optional.Optional[int] {
 result := ParseInt("42").OrElse(0)
 ```
 
+### Stream Use Cases
+
+#### Data Transformation Pipeline
+
+```go
+// Process a collection of users
+users := []User{...}
+result := stream.NewStream(users).
+    Filter(func(u User) bool {
+        return u.Age >= 18 // Only adults
+    }).
+    Sort(func(a, b User) bool {
+        return a.Name < b.Name // Sort by name
+    }).
+    ToSlice()
+```
+
+#### Parallel Data Processing
+
+```go
+// Process items in parallel with controllable concurrency
+items := []Item{...}
+results := stream.NewStream(items).
+    ParallelStream(func(item Item) interface{} {
+        return processItemIntensively(item) // CPU intensive work
+    }, runtime.NumCPU()) // Use all available CPUs
+
+// Group results
+groupedByCategory := stream.NewStream(results.ToSlice()).
+    GroupByString(func(r interface{}) string {
+        return r.(ProcessedItem).Category
+    })
+```
+
 ## Documentation
 
 For detailed documentation about each package:
 
 - [Enum Package Documentation](enum/README.md)
 - [Optional Package Documentation](optional/README.md)
+- [Stream Package Documentation](stream/README.md)
 
 ## License
 
