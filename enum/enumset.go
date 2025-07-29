@@ -1,14 +1,10 @@
 package enum
 
 import (
-	"errors"
 	"sort"
 
 	"github.com/tiagods/go-extras/optional"
 )
-
-// ErrEnumNotFound is returned when an enum could not be found in the set
-var ErrEnumNotFound = errors.New("enum not found")
 
 // EnumSet is a collection of Enum values of the same type
 type EnumSet[T any] struct {
